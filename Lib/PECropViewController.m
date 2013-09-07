@@ -65,9 +65,15 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
                                                                        target:self
                                                                        action:@selector(constrain:)];
     self.toolbarItems = @[flexibleSpace, constrainButton, flexibleSpace];
-    self.navigationController.toolbarHidden = NO;
     
     self.cropView.image = self.image;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self.navigationController setToolbarHidden:NO animated:animated];
 }
 
 - (void)viewDidAppear:(BOOL)animated
